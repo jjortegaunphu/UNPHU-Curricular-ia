@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>UNPHU Curricular IA</title>
+
+  <style>
+    :root {
+      --azul-oscuro: #003b71;
+      --azul: #005aa8;
+      --azul-claro: #eaf4fd;
+      --verde: #5a9f35;
+      --gris-fondo: #f5f7fa;
+      --gris-texto: #5f6875;
+      --gris-borde: #dfe3e8;
+      --blanco: #ffffff;
+      --amarillo: #fff7dd;
+      --rojo-claro: #fff0f0;
+      --verde-claro: #eef8ea;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--gris-fondo);
+      color: #20252b;
+      line-height: 1.5;
+    }
+
+    /* ================================
+       CABECERA
+    ================================= */
+
+    header {
+      background: var(--azul-oscuro);
+      color: white;
+      padding: 17px 7%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+    }
+
+    .topbar {
+      max-width: 1300px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .brand span {
+      color: #a8d88c;
+    }
+
+    .top-info {
+      font-size: 13px;
+      opacity: 0.9;
+      text-align: right;
+    }
+
+    /* ================================
+       HERO
+    ================================= */
+
+    .hero {
+      background:
+        linear-gradient(135deg, rgba(0,59,113,0.98), rgba(0,101,176,0.95));
+      color: white;
+      padding: 75px 7% 80px;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #c6e4ff;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      line-height: 1.05;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: #a8d88c;
+    }
+
+    .hero p {
+      max-width: 850px;
+      margin: auto;
+      font-size: 18px;
+      color: #e5eff8;
+      line-height: 1.7;
+    }
+
+    .hero-flow {
+      margin-top: 38px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      flex-wrap: wrap;
+      font-size: 13px;
+    }
+
+    .hero-flow .step {
+      background: rgba(255,255,255,0.13);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 8px 13px;
+      border-radius: 20px;
+    }
+
+    .hero-flow .arrow {
+      opacity: 0.65;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 70px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 34px;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 5px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #d6e7f6;
+    }
+
+    /* ================================
+       CONTENEDOR PRINCIPAL
+    ================================= */
+
+    main {
+      max-width: 1300px;
+      margin: auto;
+      padding: 45px 24px 80px;
+    }
+
+    .intro {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 35px;
+    }
+
+    .intro h2 {
+      color: var(--azul-oscuro);
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .intro p {
+      color: var(--gris-texto);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ================================
+       CATEGORÍAS
+    ================================= */
+
+    .category-wrapper {
+      background: white;
+      border: 1px solid var(--gris-borde);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 35px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    }
+
+    .category-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gris-texto);
+      margin-bottom: 14px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter {
+      border: 1px solid #cfd6df;
+      background: white;
+      border-radius: 30px;
+      padding: 11px 17px;
+      cursor: pointer;
+      color: #454d57;
+      font-size: 13px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .filter:hover {
+      border-color: var(--azul);
+      color: var(--azul);
+      background: var(--azul-claro);
+    }
+
+    .filter.active {
+      background: var(--azul-oscuro);
+      color: white;
+      border-color: var(--azul-oscuro);
+    }
+
+    /* ================================
+       TARJETAS
+    ================================= */
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 22px;
+    }
+
+    .tool-card {
+      background: white;
+      border: 1px solid var(--gris-borde);
+      border-radius: 16px;
+      padding: 27px;
+      transition: 0.25s;
+      display: flex;
+      flex-direction: column;
+      min-height: 390px;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    .tool-card.hidden {
+      display: none;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 16px;
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      background: var(--azul-claro);
+    }
+
+    .tool-card h3 {
+      color: var(--azul-oscuro);
+      font-size: 21px;
+      line-height: 1.2;
+    }
+
+    .tag {
+      display: inline-block;
+      width: fit-content;
+      padding: 5px 10px;
+      background: var(--verde-claro);
+      color: #3e7a24;
+      border-radius: 15px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      margin-bottom: 13px;
+    }
+
+    .tool-card > p {
+      color: var(--gris-texto);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 17px;
+    }
+
+    .features {
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .feature {
+      font-size: 13px;
+      color: #444d57;
+      padding: 7px 0;
+      border-bottom: 1px solid #eef0f2;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .feature:last-child {
+      border-bottom: 0;
+    }
+
+    .check {
+      color: var(--verde);
+      font-weight: bold;
+    }
+
+    .tool-button {
+      width: 100%;
+      border: none;
+      background: var(--azul);
+      color: white;
+      padding: 12px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .tool-button:hover {
+      background: var(--azul-oscuro);
+    }
+
+    /* ================================
+       ALINEACIÓN
+    ================================= */
+
+    .alignment {
+      margin-top: 50px;
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--gris-borde);
+      padding: 32px;
+    }
+
+    .alignment h2 {
+      color: var(--azul-oscuro);
+      margin-bottom: 10px;
+    }
+
+    .alignment > p {
+      color: var(--gris-texto);
+      max-width: 850px;
+      line-height: 1.7;
+    }
+
+    .alignment-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .alignment-item {
+      padding: 12px 15px;
+      background: var(--azul-claro);
+      border-radius: 9px;
+      color: var(--azul-oscuro);
+      font-weight: 700;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .alignment-arrow {
+      color: #8d969f;
+      font-weight: bold;
+    }
+
+    /* ================================
+       AVISO
+    ================================= */
+
+    .notice {
+      margin-top: 35px;
+      padding: 22px;
+      background: var(--amarillo);
+      border-left: 5px solid #e9ae32;
+      border-radius: 8px;
+    }
+
+    .notice h3 {
+      color: #745400;
+      margin-bottom: 7px;
+    }
+
+    .notice p {
+      color: #6c5b2a;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ================================
+       MODAL
+    ================================= */
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.55);
+      padding: 20px;
+      overflow: auto;
+    }
+
+    .modal-content {
+      max-width: 750px;
+      background: white;
+      margin: 60px auto;
+      border-radius: 16px;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+
+    .close {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #777;
+    }
+
+    .modal-content h2 {
+      color: var(--azul-oscuro);
+      margin-bottom: 12px;
+    }
+
+    .modal-content p {
+      color: var(--gris-texto);
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .modal-list {
+      background: #f7f9fb;
+      border-radius: 10px;
+      padding: 18px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* ================================
+       PIE
+    ================================= */
+
+    footer {
+      background: #002c53;
+      color: #dce5ed;
+      padding: 35px 20px;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    footer strong {
+      color: white;
+      font-size: 15px;
+    }
+
+    footer .disclaimer {
+      max-width: 800px;
+      margin: 10px auto 0;
+      opacity: 0.75;
+      font-size: 11px;
+    }
+
+    /* ================================
+       RESPONSIVE
+    ================================= */
+
+    @media (max-width: 800px) {
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .stats {
+        gap: 30px;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .top-info {
+        text-align: center;
+      }
+
+      .alignment-arrow {
+        transform: rotate(90deg);
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- ==================================
+     CABECERA
+=================================== -->
+
+<header>
+  <div class="topbar">
+
+    <div class="brand">
+      UNPHU <span>Curricular IA</span>
+    </div>
+
+    <div class="top-info">
+      Asistente para el diseño, revisión y alineación curricular
+    </div>
+
+  </div>
+</header>
+
+
+<!-- ==================================
+     HERO
+=================================== -->
+
+<section class="hero">
+
+  <div class="hero-inner">
+
+    <div class="eyebrow">
+      Diseño y Desarrollo Curricular Universitario
+    </div>
+
+    <h1>
+      Herramientas <span>IA</span><br>
+      para el Diseño Curricular
+    </h1>
+
+    <p>
+      Plataforma de apoyo para la elaboración, revisión y validación
+      de los principales componentes del diseño curricular universitario,
+      con énfasis en la coherencia, la trazabilidad y la alineación
+      entre perfil de egreso, competencias, resultados de aprendizaje,
+      programas de asignatura, guías docentes y evaluación.
+    </p>
+
+
+    <div class="hero-flow">
+
+      <span class="step">Perfil de egreso</span>
+      <span class="arrow">→</span>
+
+      <span class="step">Competencias</span>
+      <span class="arrow">→</span>
+
+      <span class="step">RAE</span>
+      <span class="arrow">→</span>
+
+      <span class="step">Programa</span>
+      <span class="arrow">→</span>
+
+      <span class="step">Guía docente</span>
+      <span class="arrow">→</span>
+
+      <span class="step">Evaluación</span>
+
+    </div>
+
+
+    <div class="stats">
+
+      <div class="stat">
+        <strong>6</strong>
+        <span>Áreas curriculares</span>
+      </div>
+
+      <div class="stat">
+        <strong>2</strong>
+        <span>Modalidades: crear y revisar</span>
+      </div>
+
+      <div class="stat">
+        <strong>IA</strong>
+        <span>Asistencia curricular</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ==================================
+     CONTENIDO
+=================================== -->
+
+<main>
+
+  <div class="intro">
+
+    <h2>Herramientas curriculares</h2>
+
+    <p>
+      Seleccione una categoría para visualizar las funciones disponibles.
+      Cada módulo está concebido para asistir tanto en la creación como
+      en la revisión de documentos y componentes curriculares.
+    </p>
+
+  </div>
+
+
+  <!-- CATEGORÍAS -->
+
+  <div class="category-wrapper">
+
+    <div class="category-title">
+      Seleccione una categoría
+    </div>
+
+    <div class="filters">
+
+      <button class="filter active"
+              data-category="perfil">
+        Perfil de egreso
+      </button>
+
+      <button class="filter"
+              data-category="competencias">
+        Diseño de competencias
+      </button>
+
+      <button class="filter"
+              data-category="rae">
+        Resultados de Aprendizaje
+      </button>
+
+      <button class="filter"
+              data-category="programa">
+        Programa de asignatura
+      </button>
+
+      <button class="filter"
+              data-category="guia">
+        Guía docente
+      </button>
+
+      <button class="filter"
+              data-category="evaluacion">
+        Sistema de evaluación
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ==================================
+       TARJETAS
+  =================================== -->
+
+  <section class="tools-grid">
+
+
+    <!-- PERFIL DE EGRESO -->
+
+    <article class="tool-card"
+             data-category="perfil">
+
+      <div class="card-header">
+
+        <div class="icon">👤</div>
+
+        <div>
+          <h3>Perfil de Egreso AI</h3>
+        </div>
+
+      </div>
+
+      <span class="tag">
+        Perfil de egreso
+      </span>
+
+      <p>
+        Asiste en la elaboración y revisión del perfil de egreso
+        de una carrera, asegurando una descripción integral del
+        profesional que se pretende formar.
+      </p>
+
+      <div class="features">
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Redacción recomendada entre 3 y 5 párrafos.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Integra conocimientos, habilidades, destrezas,
+          actitudes y valores.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Revisa correspondencia con mercado laboral
+          y tendencias internacionales.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Verifica articulación con objetivos de la carrera.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Comprueba la relación Perfil → Competencias.
+        </div>
+
+      </div>
+
+      <button class="tool-button"
+              onclick="openTool('perfil')">
+        Abrir herramienta
+      </button>
+
+    </article>
+
+
+    <!-- COMPETENCIAS -->
+
+    <article class="tool-card hidden"
+             data-category="competencias">
+
+      <div class="card-header">
+
+        <div class="icon">🎯</div>
+
+        <div>
+          <h3>CompetenciasAI</h3>
+        </div>
+
+      </div>
+
+      <span class="tag">
+        Diseño de competencias
+      </span>
+
+      <p>
+        Genera, revisa y valida competencias vinculadas con
+        el perfil de egreso y los criterios institucionales.
+      </p>
+
+      <div class="features">
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Competencias Fundamentales, Genéricas y Especializadas.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Protege las Competencias Fundamentales institucionales.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Verbo en infinitivo + objeto de aprendizaje +
+          condición/contexto + finalidad.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Detecta competencias duplicadas o solapadas.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Comprueba que sean observables y medibles.
+        </div>
+
+      </div>
+
+      <button class="tool-button"
+              onclick="openTool('competencias')">
+        Abrir herramienta
+      </button>
+
+    </article>
+
+
+    <!-- RAE -->
+
+    <article class="tool-card hidden"
+             data-category="rae">
+
+      <div class="card-header">
+
+        <div class="icon">✅</div>
+
+        <div>
+          <h3>ResultadosAI</h3>
+        </div>
+
+      </div>
+
+      <span class="tag">
+        Resultados de Aprendizaje
+      </span>
+
+      <p>
+        Formula y revisa Resultados de Aprendizaje
+        vinculados con las competencias y con los desempeños
+        esperados al finalizar la asignatura.
+      </p>
+
+      <div class="features">
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Verbo en infinitivo + objeto + contexto.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Comprueba que sean observables y evaluables.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Constructor guiado de RAE.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Detecta redundancias entre resultados.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Valida la relación Competencia → RAE.
+        </div>
+
+      </div>
+
+      <button class="tool-button"
+              onclick="openTool('rae')">
+        Abrir herramienta
+      </button>
+
+    </article>
+
+
+    <!-- PROGRAMA -->
+
+    <article class="tool-card hidden"
+             data-category="programa">
+
+      <div class="card-header">
+
+        <div class="icon">📘</div>
+
+        <div>
+          <h3>ProgramaAI</h3>
+        </div>
+
+      </div>
+
+      <span class="tag">
+        Programa de asignatura
+      </span>
+
+      <p>
+        Asiste en la elaboración y revisión integral
+        del Programa de Asignatura.
+      </p>
+
+      <div class="features">
+
+        <div class="feature">
+          <span class="check">✓</span>
+          I. Datos Generales.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          II. Descripción de la Asignatura.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          III. Competencias.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          IV. Resultados de Aprendizaje.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          V. Contenidos.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          VI. Estrategias y Actividades Formativas.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          VII. Recursos didácticos e informacionales.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          VIII. Sistema de Evaluación del Aprendizaje.
+        </div>
+
+      </div>
+
+      <button class="tool-button"
+              onclick="openTool('programa')">
+        Abrir herramienta
+      </button>
+
+    </article>
+
+
+    <!-- GUÍA DOCENTE -->
+
+    <article class="tool-card hidden"
+             data-category="guia">
+
+      <div class="card-header">
+
+        <div class="icon">📋</div>
+
+        <div>
+          <h3>GuíaDocenteAI</h3>
+        </div>
+
+      </div>
+
+      <span class="tag">
+        Guía docente
+      </span>
+
+      <p>
+        Construye y revisa la planificación operativa
+        de la asignatura, manteniendo coherencia con
+        el Programa de Asignatura aprobado.
+      </p>
+
+      <div class="features">
+
+        <div class="feature">
+          <span class="check">✓</span>
+          VIII. Datos Generales.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          IX. Cronograma.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          X. Sistema de Evaluación.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          XI. Recursos Bibliográficos Actualizados.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          XII. Anexos.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Revisión automática de alineación curricular semanal.
+        </div>
+
+      </div>
+
+      <button class="tool-button"
+              onclick="openTool('guia')">
+        Abrir herramienta
+      </button>
+
+    </article>
+
+
+    <!-- SISTEMA DE EVALUACIÓN -->
+
+    <article class="tool-card hidden"
+             data-category="evaluacion">
+
+      <div class="card-header">
+
+        <div class="icon">📊</div>
+
+        <div>
+          <h3>EvaluaciónAI</h3>
+        </div>
+
+      </div>
+
+      <span class="tag">
+        Sistema de evaluación
+      </span>
+
+      <p>
+        Diseña y revisa el sistema de evaluación del aprendizaje
+        desde un enfoque por competencias y resultados de aprendizaje.
+      </p>
+
+      <div class="features">
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Evaluación diagnóstica, formativa y sumativa.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Semana de aplicación.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Técnica evaluativa.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          RAE asociado.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Instrumento de evaluación.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Valor o ponderación.
+        </div>
+
+        <div class="feature">
+          <span class="check">✓</span>
+          Validación automática del total de 100 puntos.
+        </div>
+
+      </div>
+
+      <button class="tool-button"
+              onclick="openTool('evaluacion')">
+        Abrir herramienta
+      </button>
+
+    </article>
+
+  </section>
+
+
+  <!-- ==================================
+       ALINEACIÓN CURRICULAR
+  =================================== -->
+
+  <section class="alignment">
+
+    <h2>Alineación curricular integrada</h2>
+
+    <p>
+      La plataforma estará diseñada para comprobar la trazabilidad
+      entre los diferentes componentes del diseño curricular.
+      Los módulos no funcionarán de manera aislada, sino conectados.
+    </p>
+
+    <div class="alignment-flow">
+
+      <div class="alignment-item">
+        Perfil de egreso
+      </div>
+
+      <div class="alignment-arrow">
+        →
+      </div>
+
+      <div class="alignment-item">
+        Competencias
+      </div>
+
+      <div class="alignment-arrow">
+        →
+      </div>
+
+      <div class="alignment-item">
+        RAE
+      </div>
+
+      <div class="alignment-arrow">
+        →
+      </div>
+
+      <div class="alignment-item">
+        Contenidos
+      </div>
+
+      <div class="alignment-arrow">
+        →
+      </div>
+
+      <div class="alignment-item">
+        Metodologías
+      </div>
+
+      <div class="alignment-arrow">
+        →
+      </div>
+
+      <div class="alignment-item">
+        Actividades
+      </div>
+
+      <div class="alignment-arrow">
+        →
+      </div>
+
+      <div class="alignment-item">
+        Evaluación
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==================================
+       AVISO
+  =================================== -->
+
+  <div class="notice">
+
+    <h3>Versión inicial de la plataforma</h3>
+
+    <p>
+      Esta versión establece la arquitectura académica y visual del
+      sistema. Los módulos de inteligencia artificial, carga de documentos,
+      generación automática, revisión curricular y exportación a Word/PDF
+      serán incorporados posteriormente.
+    </p>
+
+  </div>
+
+</main>
+
+
+<!-- ==================================
+     MODAL
+=================================== -->
+
+<div id="toolModal" class="modal">
+
+  <div class="modal-content">
+
+    <span class="close"
+          onclick="closeTool()">
+      &times;
+    </span>
+
+    <h2 id="modalTitle">
+      Herramienta
+    </h2>
+
+    <p id="modalDescription">
+    </p>
+
+    <div id="modalContent"
+         class="modal-list">
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ==================================
+     PIE
+=================================== -->
+
+<footer>
+
+  <strong>
+    UNPHU Curricular IA
+  </strong>
+
+  <br>
+
+  Asistente para el diseño, revisión y alineación curricular universitaria.
+
+  <div class="disclaimer">
+
+    Prototipo de apoyo académico.
+    Las decisiones curriculares y la aprobación de los documentos
+    corresponden a las instancias institucionales competentes.
+
+  </div>
+
+</footer>
+
+
+<!-- ==================================
+     JAVASCRIPT
+=================================== -->
+
+<script>
+
+  /* =================================
+     FILTRADO POR CATEGORÍA
+  ================================== */
+
+  const filters =
+    document.querySelectorAll('.filter');
+
+  const cards =
+    document.querySelectorAll('.tool-card');
+
+
+  filters.forEach(button => {
+
+    button.addEventListener('click', () => {
+
+      const category =
+        button.dataset.category;
+
+      filters.forEach(btn =>
+        btn.classList.remove('active')
+      );
+
+      button.classList.add('active');
+
+
+      cards.forEach(card => {
+
+        if (
+          card.dataset.category === category
+        ) {
+
+          card.classList.remove('hidden');
+
+        } else {
+
+          card.classList.add('hidden');
+
+        }
+
+      });
+
+    });
+
+  });
+
+
+  /* =================================
+     INFORMACIÓN DE LOS MÓDULOS
+  ================================== */
+
+  const tools = {
+
+    perfil: {
+
+      title:
+        "Perfil de Egreso AI",
+
+      description:
+        "Módulo para crear, revisar y validar perfiles de egreso conforme a los criterios curriculares establecidos.",
+
+      content: `
+        <strong>Funciones previstas:</strong><br><br>
+
+        • Crear un nuevo perfil de egreso.<br>
+        • Revisar un perfil existente.<br>
+        • Validar redacción entre 3 y 5 párrafos.<br>
+        • Identificar conocimientos, habilidades, destrezas,
+          actitudes y valores.<br>
+        • Revisar correspondencia con el mercado laboral.<br>
+        • Revisar tendencias nacionales e internacionales.<br>
+        • Validar articulación con los objetivos de la carrera.<br>
+        • Analizar correspondencia Perfil → Competencias.
+      `
+
+    },
+
+
+    competencias: {
+
+      title:
+        "Diseño de Competencias",
+
+      description:
+        "Módulo para formular y revisar competencias vinculadas con el perfil de egreso.",
+
+      content: `
+        <strong>Estructura:</strong><br><br>
+
+        Verbo en infinitivo + Objeto de aprendizaje +
+        Condición de calidad o contexto + Finalidad.
+        <br><br>
+
+        <strong>Funciones previstas:</strong><br><br>
+
+        • Formular Competencias Genéricas.<br>
+        • Formular Competencias Especializadas.<br>
+        • Mantener las Competencias Fundamentales institucionales.<br>
+        • Revisar el uso de un solo verbo en infinitivo.<br>
+        • Detectar solapamientos.<br>
+        • Validar observabilidad y medición.<br>
+        • Revisar relación con el Perfil de Egreso.
+      `
+
+    },
+
+
+    rae: {
+
+      title:
+        "Resultados de Aprendizaje",
+
+      description:
+        "Módulo para formular y revisar resultados de aprendizaje asociados a las competencias.",
+
+      content: `
+        <strong>Estructura:</strong><br><br>
+
+        Verbo en infinitivo + Objeto + Contexto.
+        <br><br>
+
+        <strong>Funciones previstas:</strong><br><br>
+
+        • Crear Resultados de Aprendizaje.<br>
+        • Revisar RAE existentes.<br>
+        • Constructor guiado de RAE.<br>
+        • Identificar verbos observables y evaluables.<br>
+        • Detectar redundancias.<br>
+        • Validar la correspondencia Competencia → RAE.
+      `
+
+    },
+
+
+    programa: {
+
+      title:
+        "Programa de Asignatura",
+
+      description:
+        "Módulo para elaborar y revisar las ocho secciones que conforman el Programa de Asignatura.",
+
+      content: `
+        <strong>Secciones:</strong><br><br>
+
+        I. Datos Generales.<br>
+        II. Descripción de la Asignatura.<br>
+        III. Competencias.<br>
+        IV. Resultados de Aprendizaje.<br>
+        V. Contenidos.<br>
+        VI. Estrategias y Actividades Formativas.<br>
+        VII. Recursos Didácticos e Informacionales.<br>
+        VIII. Sistema de Evaluación del Aprendizaje.<br><br>
+
+        <strong>Perfil docente:</strong><br><br>
+
+        • Título de grado y área.<br>
+        • Título de maestría o doctorado y área.<br>
+        • Áreas de experiencia para impartir la asignatura.<br>
+        • Años mínimos de experiencia docente.
+      `
+
+    },
+
+
+    guia: {
+
+      title:
+        "Guía Docente",
+
+      description:
+        "Módulo para desarrollar la planificación operativa de la asignatura a partir del programa aprobado.",
+
+      content: `
+        <strong>Secciones:</strong><br><br>
+
+        VIII. Datos Generales.<br>
+        IX. Cronograma.<br>
+        X. Sistema de Evaluación.<br>
+        XI. Recursos Bibliográficos Actualizados.<br>
+        XII. Anexos.<br><br>
+
+        <strong>Cronograma:</strong><br><br>
+
+        Contenido |
+        Metodología de Enseñanza |
+        Actividades Formativas y REA(s) |
+        Recursos y Bibliografías.
+        <br><br>
+
+        La herramienta revisará la alineación
+        entre las cuatro columnas semana por semana.
+      `
+
+    },
+
+
+    evaluacion: {
+
+      title:
+        "Sistema de Evaluación",
+
+      description:
+        "Módulo especializado en el diseño y revisión de evidencias de evaluación alineadas con los Resultados de Aprendizaje.",
+
+      content: `
+        <strong>Estructura de la tabla:</strong><br><br>
+
+        Semana |
+        Técnica |
+        REA(s) |
+        Tipo |
+        Instrumento(s) |
+        Valor.
+        <br><br>
+
+        <strong>Tipos:</strong><br><br>
+
+        D = Diagnóstica.<br>
+        F = Formativa.<br>
+        S = Sumativa.<br><br>
+
+        <strong>Validaciones:</strong><br><br>
+
+        • Correspondencia con los RAE.<br>
+        • Diferenciación entre técnica e instrumento.<br>
+        • Diversidad de evidencias.<br>
+        • Coherencia con el cronograma.<br>
+        • Correspondencia con los anexos.<br>
+        • Suma automática de 100 puntos.
+      `
+
+    }
+
+  };
+
+
+  /* =================================
+     ABRIR MODAL
+  ================================== */
+
+  function openTool(toolName) {
+
+    const tool =
+      tools[toolName];
+
+    document.getElementById(
+      'modalTitle'
+    ).innerHTML =
+      tool.title;
+
+    document.getElementById(
+      'modalDescription'
+    ).innerHTML =
+      tool.description;
+
+    document.getElementById(
+      'modalContent'
+    ).innerHTML =
+      tool.content;
+
+    document.getElementById(
+      'toolModal'
+    ).style.display =
+      'block';
+
+  }
+
+
+  /* =================================
+     CERRAR MODAL
+  ================================== */
+
+  function closeTool() {
+
+    document.getElementById(
+      'toolModal'
+    ).style.display =
+      'none';
+
+  }
+
+
+  /* Cerrar haciendo clic fuera */
+
+  window.onclick =
+    function(event) {
+
+      const modal =
+        document.getElementById(
+          'toolModal'
+        );
+
+      if (
+        event.target === modal
+      ) {
+
+        modal.style.display =
+          'none';
+
+      }
+
+    };
+
+
+  /* Cerrar con tecla ESC */
+
+  document.addEventListener(
+    'keydown',
+    function(event) {
+
+      if (
+        event.key === 'Escape'
+      ) {
+
+        closeTool();
+
+      }
+
+    }
+  );
+
+</script>
+
+
+</body>
+</html>
