@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Perfil de Egreso AI | UNPHU Curricular IA</title>
+
+<style>
+:root{
+  --azul-oscuro:#003b71;
+  --azul:#005aa8;
+  --azul-claro:#eaf4fd;
+  --verde:#5a9f35;
+  --verde-claro:#eef8ea;
+  --gris-fondo:#f5f7fa;
+  --gris-texto:#5f6875;
+  --gris-borde:#dfe3e8;
+  --blanco:#ffffff;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  background:var(--gris-fondo);
+  color:#20252b;
+  line-height:1.6;
+}
+
+/* CABECERA */
+
+header{
+  background:var(--azul-oscuro);
+  color:white;
+  padding:18px 7%;
+}
+
+.topbar{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.brand{
+  font-size:20px;
+  font-weight:700;
+}
+
+.brand span{
+  color:#a8d88c;
+}
+
+.back{
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+}
+
+.back:hover{
+  text-decoration:underline;
+}
+
+/* PRESENTACIÓN */
+
+.hero{
+  background:linear-gradient(135deg,#064d86,#0870b7);
+  color:white;
+  padding:55px 20px;
+  text-align:center;
+}
+
+.hero .tag{
+  display:inline-block;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  margin-bottom:15px;
+  color:#d8ebfa;
+}
+
+.hero h1{
+  font-size:42px;
+  margin-bottom:12px;
+}
+
+.hero h1 span{
+  color:#a8d88c;
+}
+
+.hero p{
+  max-width:800px;
+  margin:auto;
+  color:#e8f2fa;
+}
+
+/* CONTENIDO */
+
+main{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px 70px;
+}
+
+/* MODOS */
+
+.mode-box{
+  background:white;
+  border:1px solid var(--gris-borde);
+  border-radius:14px;
+  padding:25px;
+  margin-bottom:25px;
+}
+
+.mode-box h2{
+  color:var(--azul-oscuro);
+  margin-bottom:8px;
+}
+
+.mode-box p{
+  color:var(--gris-texto);
+  margin-bottom:20px;
+}
+
+.mode-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.mode-button{
+  border:1px solid #cbd5df;
+  background:white;
+  color:var(--azul-oscuro);
+  padding:13px 22px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:700;
+}
+
+.mode-button:hover{
+  background:var(--azul-claro);
+}
+
+.mode-button.active{
+  background:var(--azul-oscuro);
+  border-color:var(--azul-oscuro);
+  color:white;
+}
+
+/* PANEL */
+
+.panel{
+  background:white;
+  border:1px solid var(--gris-borde);
+  border-radius:14px;
+  padding:30px;
+  box-shadow:0 4px 15px rgba(0,0,0,.04);
+}
+
+.panel.hidden{
+  display:none;
+}
+
+.panel-title{
+  margin-bottom:25px;
+}
+
+.panel-title h2{
+  color:var(--azul-oscuro);
+  margin-bottom:7px;
+}
+
+.panel-title p{
+  color:var(--gris-texto);
+  font-size:14px;
+}
+
+/* FORMULARIO */
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+}
+
+.form-group.full{
+  grid-column:1 / -1;
+}
+
+label{
+  font-weight:700;
+  font-size:14px;
+  margin-bottom:7px;
+  color:#303841;
+}
+
+.required{
+  color:#b22929;
+}
+
+.helper{
+  font-size:12px;
+  color:#7a8490;
+  margin-bottom:7px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  border:1px solid #ccd4dc;
+  border-radius:7px;
+  padding:12px;
+  font-family:inherit;
+  font-size:14px;
+  background:white;
+}
+
+textarea{
+  min-height:115px;
+  resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  outline:none;
+  border-color:var(--azul);
+  box-shadow:0 0 0 3px rgba(0,90,168,.10);
+}
+
+/* BOTÓN PRINCIPAL */
+
+.action-area{
+  margin-top:28px;
+  padding-top:22px;
+  border-top:1px solid #e6e9ed;
+}
+
+.primary-button{
+  background:var(--azul);
+  color:white;
+  border:none;
+  border-radius:8px;
+  padding:14px 24px;
+  font-size:15px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.primary-button:hover{
+  background:var(--azul-oscuro);
+}
+
+/* MENSAJE */
+
+.demo-message{
+  display:none;
+  margin-top:20px;
+  padding:17px;
+  background:var(--azul-claro);
+  border-left:4px solid var(--azul);
+  border-radius:6px;
+  color:#284c68;
+  font-size:14px;
+}
+
+/* CRITERIOS DE REVISIÓN */
+
+.criteria{
+  margin-top:25px;
+  border-top:1px solid #e5e8ec;
+  padding-top:20px;
+}
+
+.criteria h3{
+  color:var(--azul-oscuro);
+  margin-bottom:12px;
+}
+
+.criteria-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.criterion{
+  padding:11px 13px;
+  background:#f7f9fb;
+  border-radius:7px;
+  font-size:13px;
+}
+
+.criterion::before{
+  content:"✓";
+  color:var(--verde);
+  font-weight:bold;
+  margin-right:7px;
+}
+
+/* AVISO */
+
+.notice{
+  margin-top:25px;
+  background:#fff8e5;
+  border-left:4px solid #e8ae35;
+  border-radius:7px;
+  padding:18px;
+  font-size:13px;
+  color:#66552d;
+}
+
+/* FOOTER */
+
+footer{
+  background:#002c53;
+  color:#dce5ed;
+  text-align:center;
+  padding:28px 20px;
+  font-size:12px;
+}
+
+@media(max-width:750px){
+
+  .topbar{
+    flex-direction:column;
+  }
+
+  .hero h1{
+    font-size:34px;
+  }
+
+  .form-grid,
+  .criteria-grid{
+    grid-template-columns:1fr;
+  }
+
+  .form-group.full{
+    grid-column:auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="topbar">
+
+    <div class="brand">
+      UNPHU <span>Curricular IA</span>
+    </div>
+
+    <a class="back" href="index.html">
+      ← Volver a herramientas curriculares
+    </a>
+
+  </div>
+</header>
+
+
+<section class="hero">
+
+  <span class="tag">
+    Diseño curricular universitario
+  </span>
+
+  <h1>
+    Perfil de Egreso <span>AI</span>
+  </h1>
+
+  <p>
+    Herramienta de apoyo para la elaboración y revisión del
+    perfil de egreso, considerando la formación integral,
+    la pertinencia profesional y la coherencia curricular.
+  </p>
+
+</section>
+
+
+<main>
+
+  <section class="mode-box">
+
+    <h2>¿Qué desea realizar?</h2>
+
+    <p>
+      Seleccione si desea elaborar un nuevo perfil de egreso
+      o revisar un perfil existente.
+    </p>
+
+    <div class="mode-buttons">
+
+      <button
+        id="btnCrear"
+        class="mode-button active"
+        onclick="showPanel('crear')">
+        ✨ Crear perfil de egreso
+      </button>
+
+      <button
+        id="btnRevisar"
+        class="mode-button"
+        onclick="showPanel('revisar')">
+        🔎 Revisar perfil de egreso
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- CREAR PERFIL -->
+
+  <section id="crear" class="panel">
+
+    <div class="panel-title">
+
+      <h2>Crear perfil de egreso</h2>
+
+      <p>
+        Complete la información disponible sobre el programa académico.
+        Estos datos servirán posteriormente como insumos para la
+        generación asistida del perfil.
+      </p>
+
+    </div>
+
+
+    <div class="form-grid">
+
+      <div class="form-group">
+
+        <label>
+          Nombre de la carrera o programa
+          <span class="required">*</span>
+        </label>
+
+        <input
+          type="text"
+          placeholder="Ej.: Maestría en Gerencia de Proyectos">
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>
+          Nivel académico
+          <span class="required">*</span>
+        </label>
+
+        <select>
+          <option value="">Seleccione...</option>
+          <option>Técnico Superior</option>
+          <option>Grado</option>
+          <option>Especialidad</option>
+          <option>Maestría</option>
+          <option>Doctorado</option>
+        </select>
+
+      </div>
+
+
+      <div class="form-group full">
+
+        <label>
+          Objetivos de la carrera o programa
+          <span class="required">*</span>
+        </label>
+
+        <div class="helper">
+          Indique los principales propósitos formativos del programa.
+        </div>
+
+        <textarea
+          placeholder="Escriba los objetivos del programa..."></textarea>
+
+      </div>
+
+
+      <div class="form-group full">
+
+        <label>
+          Campo ocupacional
+          <span class="required">*</span>
+        </label>
+
+        <div class="helper">
+          Describa los ámbitos, sectores y funciones donde podrá
+          desempeñarse el egresado.
+        </div>
+
+        <textarea
+          placeholder="Ej.: organizaciones públicas, privadas, consultoría..."></textarea>
+
+      </div>
+
+
+      <div class="form-group full">
+
+        <label>
+          Conocimientos que debe dominar
+          <span class="required">*</span>
+        </label>
+
+        <textarea
+          placeholder="Indique los conocimientos fundamentales y especializados..."></textarea>
+
+      </div>
+
+
+      <div class="form-group full">
+
+        <label>
+          Habilidades y destrezas profesionales
+          <span class="required">*</span>
+        </label>
+
+        <textarea
+          placeholder="Describa qué debe ser capaz de hacer el egresado..."></textarea>
+
+      </div>
+
+
+      <div class="form-group full">
+
+        <label>
+          Actitudes y valores
+          <span class="required">*</span>
+        </label>
+
+        <textarea
+          placeholder="Ej.: ética profesional, responsabilidad, liderazgo, compromiso social..."></textarea>
+
+      </div>
+
+
+      <div class="form-group full">
+
+        <label>
+          Requerimientos actuales del mercado laboral
+        </label>
+
+        <div class="helper">
+          Incorpore necesidades identificadas en empleadores,
+          sectores productivos o profesionales.
+        </div>
+
+        <textarea
+          placeholder="Describa los requerimientos relevantes del mercado laboral..."></textarea>
+
+      </div>
+
+
+      <div class="form-group full">
+
+        <label>
+          Tendencias nacionales e internacionales del área
+        </label>
+
+        <textarea
+          placeholder="Describa tendencias profesionales, tecnológicas o disciplinares..."></textarea>
+
+      </div>
+
+
+      <div class="form-group full">
+
+        <label>
+          Fundamentos y avances actuales de la disciplina
+        </label>
+
+        <textarea
+          placeholder="Indique cambios, enfoques o avances recientes del área..."></textarea>
+
+      </div>
+
+
+      <div class="form-group full">
+
+        <label>
+          Información de egresados, empleadores o grupos de interés
+        </label>
+
+        <div class="helper">
+          Si dispone de consultas, estudios, encuestas o aportes
+          de grupos de interés, incorpórelos aquí.
+        </div>
+
+        <textarea
+          placeholder="Pegue o resuma aquí la información disponible..."></textarea>
+
+      </div>
+
+
+      <div class="form-group full">
+
+        <label>
+          Información adicional
+        </label>
+
+        <textarea
+          placeholder="Incluya cualquier información adicional que deba considerar el perfil..."></textarea>
+
+      </div>
+
+    </div>
+
+
+    <div class="action-area">
+
+      <button
+        class="primary-button"
+        onclick="demoCrear()">
+        ✨ Generar perfil de egreso
+      </button>
+
+      <div id="mensajeCrear" class="demo-message">
+        La interfaz está funcionando correctamente.
+        En la siguiente etapa conectaremos este botón con el
+        servicio de inteligencia artificial para generar el perfil.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- REVISAR PERFIL -->
+
+  <section id="revisar" class="panel hidden">
+
+    <div class="panel-title">
+
+      <h2>Revisar perfil de egreso</h2>
+
+      <p>
+        Pegue el perfil de egreso existente. Posteriormente,
+        el sistema analizará su cumplimiento con los criterios
+        curriculares establecidos.
+      </p>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Perfil de egreso a revisar
+        <span class="required">*</span>
+      </label>
+
+      <textarea
+        style="min-height:280px;"
+        placeholder="Pegue aquí el perfil de egreso completo..."></textarea>
+
+    </div>
+
+
+    <div class="criteria">
+
+      <h3>Criterios que serán revisados</h3>
+
+      <div class="criteria-grid">
+
+        <div class="criterion">
+          Redacción integrada en 3 a 5 párrafos
+        </div>
+
+        <div class="criterion">
+          Conocimientos
+        </div>
+
+        <div class="criterion">
+          Habilidades y destrezas
+        </div>
+
+        <div class="criterion">
+          Actitudes y valores
+        </div>
+
+        <div class="criterion">
+          Filosofía institucional
+        </div>
+
+        <div class="criterion">
+          Correspondencia con el mercado laboral
+        </div>
+
+        <div class="criterion">
+          Tendencias nacionales e internacionales
+        </div>
+
+        <div class="criterion">
+          Articulación con los objetivos de la carrera
+        </div>
+
+        <div class="criterion">
+          Actualización de los fundamentos disciplinares
+        </div>
+
+        <div class="criterion">
+          Base para la formulación de competencias
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="action-area">
+
+      <button
+        class="primary-button"
+        onclick="demoRevisar()">
+        🔎 Analizar perfil de egreso
+      </button>
+
+      <div id="mensajeRevisar" class="demo-message">
+        La función de revisión está preparada.
+        En la siguiente etapa la conectaremos con la IA para
+        presentar el diagnóstico criterio por criterio y las
+        recomendaciones de mejora.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <div class="notice">
+
+    <strong>Importante:</strong>
+    esta versión construye la interfaz de trabajo.
+    Los botones de generación y revisión todavía no envían
+    información a un modelo de inteligencia artificial.
+    La conexión se incorporará de forma segura posteriormente.
+
+  </div>
+
+</main>
+
+
+<footer>
+
+  <strong>UNPHU Curricular IA</strong><br>
+
+  Herramienta de apoyo para el diseño y desarrollo curricular universitario.
+
+</footer>
+
+
+<script>
+
+function showPanel(panel){
+
+  const crear =
+    document.getElementById('crear');
+
+  const revisar =
+    document.getElementById('revisar');
+
+  const btnCrear =
+    document.getElementById('btnCrear');
+
+  const btnRevisar =
+    document.getElementById('btnRevisar');
+
+
+  if(panel === 'crear'){
+
+    crear.classList.remove('hidden');
+    revisar.classList.add('hidden');
+
+    btnCrear.classList.add('active');
+    btnRevisar.classList.remove('active');
+
+  }else{
+
+    revisar.classList.remove('hidden');
+    crear.classList.add('hidden');
+
+    btnRevisar.classList.add('active');
+    btnCrear.classList.remove('active');
+
+  }
+
+}
+
+
+function demoCrear(){
+
+  document.getElementById(
+    'mensajeCrear'
+  ).style.display = 'block';
+
+}
+
+
+function demoRevisar(){
+
+  document.getElementById(
+    'mensajeRevisar'
+  ).style.display = 'block';
+
+}
+
+</script>
+
+</body>
+</html>
