@@ -133,36 +133,39 @@
     }
 
 
-    .brand-mark {
+   
+.brand-mark {
 
-      width: 43px;
+  width: 48px;
 
-      height: 43px;
+  height: 48px;
 
-      border-radius: 50%;
+  display: flex;
 
-      background:
-        linear-gradient(
-          135deg,
-          var(--azul-principal),
-          var(--azul-oscuro)
-        );
+  justify-content: center;
 
-      display: flex;
+  align-items: center;
 
-      justify-content: center;
+  background: transparent;
 
-      align-items: center;
+  border-radius: 0;
 
-      color: white;
+  flex-shrink: 0;
 
-      font-weight: 700;
+}
 
-      font-size: 17px;
+.unet-logo {
 
-      flex-shrink: 0;
+  width: 100%;
 
-    }
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
+
+}
+
 
 
     .brand-text {
@@ -1434,8 +1437,12 @@
       <div class="brand">
 
         <div class="brand-mark">
-          U
-        </div>
+         <img
+          src="logo-unet.png"
+          alt="Logo de la UNET"
+          class="unet-logo"
+         >
+       </div>
 
         <div class="brand-text">
           UNET <span>Curricular IA</span>
