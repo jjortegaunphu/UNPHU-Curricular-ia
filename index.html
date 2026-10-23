@@ -8,7 +8,7 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-  <title>UNPHU Curricular IA</title>
+  <title>UNET Curricular IA</title>
 
   <style>
 
@@ -16,28 +16,26 @@
        COLORES Y VARIABLES
        ========================================================= */
 
-    :root {
+   
+:root {
+  --azul-oscuro: #003B80;
+  --azul-profundo: #002B60;
+  --azul-principal: #0066CC;
+  --azul-medio: #3385D6;
+  --azul-acento: #59B2FF;
+  --azul-claro: #EAF4FF;
 
-      --verde-oscuro: #005b32;
-      --verde-profundo: #004525;
-      --verde-principal: #198447;
-      --verde-medio: #4b9d4a;
-      --verde-acento: #91bd3f;
-      --verde-claro: #edf7ef;
+  --gris-fondo: #F4F7FB;
+  --gris-claro: #F8FAFD;
+  --gris-texto: #596579;
+  --gris-borde: #DCE5F0;
 
-      --gris-fondo: #f4f6f7;
-      --gris-claro: #f8faf9;
-      --gris-texto: #59625e;
-      --gris-borde: #dce4df;
+  --texto-oscuro: #17263C;
+  --blanco: #ffffff;
 
-      --texto-oscuro: #17231c;
-
-      --blanco: #ffffff;
-
-      --amarillo-claro: #fff8e5;
-      --amarillo-borde: #e7ae32;
-
-    }
+  --amarillo-claro: #fff8e5;
+  --amarillo-borde: #e7ae32;
+}
 
 
     * {
@@ -144,7 +142,7 @@
         linear-gradient(
           135deg,
           var(--verde-principal),
-          var(--verde-oscuro)
+          var(--azul-oscuro)
         );
 
       display: flex;
@@ -171,7 +169,7 @@
       font-weight: 700;
 
       color:
-        var(--verde-oscuro);
+        var(--azul-oscuro);
 
       letter-spacing: 0.2px;
 
@@ -222,7 +220,7 @@
         linear-gradient(
           120deg,
           var(--verde-profundo),
-          var(--verde-oscuro) 50%,
+          var(--azul-oscuro) 50%,
           #087141
         );
 
@@ -464,7 +462,7 @@
     .intro h2 {
 
       color:
-        var(--verde-oscuro);
+        var(--azul-oscuro);
 
       font-size: 32px;
 
@@ -516,7 +514,7 @@
     .category-title {
 
       color:
-        var(--verde-oscuro);
+        var(--azul-oscuro);
 
       font-size:
         12px;
@@ -582,7 +580,7 @@
     .filter:hover {
 
       color:
-        var(--verde-oscuro);
+        var(--azul-oscuro);
 
       border-color:
         var(--verde-principal);
